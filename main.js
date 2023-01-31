@@ -8,20 +8,21 @@ $(document).ready(function(){
         $('form').slideUp();
     })
 
-    $('form').on('submit', function(){
-        console.log("submit");
+    $('form').on('submit', function(e){
+        console.log('submit');
         e.preventDefault();
         const enderecoDaNovaImagem = $('#endereco-imagem-nova').val();
-        const NovoItem = $('<li>style="display: none</li>')
-        $(`<img src="${enderecoDaNovaImagem}">`).apendTo(NovoItem);
+        console.log(enderecoDaNovaImagem);
+        const NovoItem = $('<li style="display: none"></li>')
+        $(`<img src="${enderecoDaNovaImagem}"/>`).appendTo(NovoItem);
         $(`
-        <div class="overlay-imagem-link">
+        <div class="ovelay-imagem-link">
             <a href="${enderecoDaNovaImagem}" target="_blank" title= "Ver imagem em tamanho real">
             Ver imagem em tamanho real
             </a>
         </div>
-            `).apendTo(NovoItem);
-            $(NovoItem).apendTo('ul');
+            `).appendTo(NovoItem);
+            $(NovoItem).appendTo(`ul`);
             $(NovoItem).fadeIn(1000);
             $('#endereco-imagem-nova').val ('')
     })
